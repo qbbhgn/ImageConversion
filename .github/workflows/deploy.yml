@@ -1,50 +1,33 @@
-name: 部署到 GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
-  # 推送到 main 分支时自动部署
   push:
-    branches: [main]
-  # 也支持在 Actions 页面手动触发
-  workflow_dispatch:
+    branches:
+      - main # 指定触发部署的分支
 
-# 赋予 GitHub Pages 部署所需的权限
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# 同一时间只允许一个部署，新推送会取消进行中的部署
-concurrency:
-  group: pages
-  cancel-in-progress: true
+  contents: write # 授予 GitHub Actions 写入仓库的权限，用于部署
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: 检出代码
-        uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: 设置 Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 22
-          cache: npm
+          node-version: '18'
 
-      - name: 安装依赖
-        run: npm install
+      - name: Install dependencies
+        run: npm install # 如果用 yarn 或 pnpm，这里也要相应调整
 
-      - name: 构建项目
+      - name: Build project
         run: npm run build
 
-      - name: 配置 GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: 上传构建产物
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: ./dist
-
-      - name: 部署到 GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist # 指定要部署的文件夹，Vite 默认是 dist
