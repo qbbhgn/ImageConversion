@@ -13,21 +13,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '24' # 与本地 Node v24.11.0 一致（Vite 8 要求 ^20.19.0 || >=22.12.0，Node 18 会构建失败）
+          # npm 版本随 Node 24 自带（11.x），无需单独指定
+          cache: npm # 缓存 npm 依赖，加速 CI
 
       - name: Install dependencies
-        run: npm install # 如果用 yarn 或 pnpm，这里也要相应调整
+        run: npm ci --no-audit --no-fund # 项目已有 package-lock.json，用 npm ci 保证安装与本地完全一致
 
       - name: Build project
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist # 指定要部署的文件夹，Vite 默认是 dist
