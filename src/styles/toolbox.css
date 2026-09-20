@@ -1,0 +1,133 @@
+.toolbox-header {
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+}
+
+.toolbox-header__inner {
+  max-width: 1120px;
+  min-height: 72px;
+  margin: auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.toolbox-header a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  text-decoration: none;
+  min-height: 44px;
+}
+
+.toolbox-header .toolbox-brand {
+  color: var(--text-strong);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.toolbox-brand svg {
+  color: var(--success);
+}
+.toolbox-source {
+  margin-left: auto;
+}
+.toolbox-header a:hover {
+  color: var(--success);
+}
+
+.toolbox-home {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.toolbox-home__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.toolbox-home h1 {
+  margin: 0;
+  font-size: 24px;
+  color: var(--text-strong);
+}
+.toolbox-count {
+  color: var(--text-dim);
+  font-size: 13px;
+}
+.toolbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 18px;
+}
+
+.tool-card {
+  min-height: 132px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--text-strong);
+  text-decoration: none;
+  transition:
+    border-color 160ms,
+    background 160ms;
+}
+
+.tool-card:hover {
+  border-color: var(--success);
+  background: var(--panel-2);
+}
+.tool-card__icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 48px;
+  height: 48px;
+  color: var(--success);
+}
+.tool-card__label {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.tool-card__label strong {
+  font-size: 18px;
+}
+.tool-card__category {
+  color: var(--text-dim);
+  font-size: 12px;
+}
+.tool-card__arrow {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--text-dim);
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--success);
+  outline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+  .toolbox-header__inner {
+    gap: 16px;
+    padding-inline: 16px;
+    flex-wrap: wrap;
+  }
+  .toolbox-source span {
+    display: none;
+  }
+  .toolbox-home {
+    padding: 28px 16px;
+  }
+}

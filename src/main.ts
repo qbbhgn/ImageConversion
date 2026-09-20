@@ -1,5 +1,7 @@
 import { createApp } from 'vue'
-import './style.css'
+import './styles/base.css'
+import './styles/toolbox.css'
 import App from './App.vue'
+import { router } from './router'
 
-createApp(App).mount('#app')
+createApp(App).use(router).mount('#app')

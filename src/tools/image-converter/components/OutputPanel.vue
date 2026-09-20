@@ -3,7 +3,7 @@ import { computed, ref, watch } from 'vue'
 import type { OutputResult } from '../types'
 import { formatBytes, truncate } from '../utils/format'
 import { copyText, downloadText } from '../utils/download'
-import { useToast } from '../composables/toast'
+import { useToast } from '../../../shared/composables/toast'
 
 const props = defineProps<{
   results: OutputResult[]
