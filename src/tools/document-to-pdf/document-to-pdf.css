@@ -1,0 +1,241 @@
+.document-tool {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 34px 20px 56px;
+}
+.document-tool__header {
+  margin-bottom: 28px;
+}
+.document-tool__brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.document-tool__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  color: var(--success);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel);
+}
+.document-tool h1 {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 26px;
+}
+.document-tool__brand p {
+  margin: 5px 0 0;
+  color: var(--text-dim);
+  font-size: 14px;
+}
+.document-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 26px;
+  align-items: start;
+}
+.document-controls {
+  display: grid;
+  gap: 18px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel);
+}
+.document-dropzone {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 26px 12px;
+  border: 1px dashed var(--border);
+  border-radius: 7px;
+  color: var(--success);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color 160ms,
+    background 160ms;
+}
+.document-dropzone:hover,
+.document-dropzone.is-dragging {
+  border-color: var(--success);
+  background: var(--panel-2);
+}
+.document-dropzone strong {
+  color: var(--text-strong);
+}
+.document-dropzone span {
+  color: var(--text-dim);
+  font-size: 12px;
+}
+.document-file {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 8px;
+  align-items: center;
+  color: var(--text);
+  font-size: 13px;
+}
+.document-file span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.document-file small {
+  grid-column: 2;
+  color: var(--text-dim);
+}
+.document-section-title {
+  margin-bottom: 10px;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+.document-targets {
+  display: grid;
+  gap: 8px;
+}
+.document-target {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--success);
+  text-align: left;
+  cursor: pointer;
+}
+.document-target:hover:not(:disabled) {
+  border-color: var(--success);
+  background: var(--panel-2);
+}
+.document-target:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+.document-target span {
+  display: grid;
+  gap: 3px;
+}
+.document-target strong {
+  color: var(--text-strong);
+}
+.document-target small {
+  color: var(--text-dim);
+  font-size: 11px;
+}
+.document-note {
+  margin: 2px 0 0;
+  color: var(--text-dim);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.document-field {
+  display: grid;
+  gap: 8px;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+.document-field span {
+  display: flex;
+  justify-content: space-between;
+}
+.document-field b {
+  color: var(--text);
+  font-weight: 500;
+}
+.document-field input {
+  width: 100%;
+  accent-color: var(--success);
+}
+.document-preview-area {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel-2);
+}
+.document-preview-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  color: var(--text-dim);
+  font-size: 12px;
+}
+.document-preview-meta span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.document-paper {
+  box-sizing: border-box;
+  width: min(100%, 794px);
+  min-height: 1123px;
+  margin: 0 auto;
+  padding: 64px 58px;
+  overflow-wrap: anywhere;
+  background: #fff;
+  color: #202522;
+  box-shadow: 0 10px 28px rgb(0 0 0 / 12%);
+  font-family: Georgia, 'Noto Serif SC', serif;
+}
+.document-paper h1,
+.document-paper h2,
+.document-paper h3 {
+  margin: 0 0 16px;
+  line-height: 1.3;
+}
+.document-paper p {
+  margin: 0 0 12px;
+}
+.document-paper table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 0.82em;
+}
+.document-paper th,
+.document-paper td {
+  padding: 7px;
+  border: 1px solid #ccd4cf;
+  text-align: left;
+}
+.document-paper th {
+  background: #edf2ef;
+}
+.document-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+.document-empty {
+  padding-top: 390px;
+  color: #9aa39e;
+  text-align: center;
+}
+.document-spin {
+  animation: document-spin 900ms linear infinite;
+}
+@keyframes document-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width: 760px) {
+  .document-tool {
+    padding: 24px 16px 40px;
+  }
+  .document-layout {
+    grid-template-columns: 1fr;
+  }
+  .document-paper {
+    min-height: 720px;
+    padding: 42px 28px;
+  }
+}

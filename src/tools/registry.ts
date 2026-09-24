@@ -1,5 +1,5 @@
 import type { Component } from 'vue'
-import { Film, Image } from '@lucide/vue'
+import { FileText, Film, Image } from '@lucide/vue'
 
 export interface ToolDefinition {
   id: string
@@ -11,6 +11,14 @@ export interface ToolDefinition {
 }
 
 export const tools: ToolDefinition[] = [
+  {
+    id: 'document-to-pdf',
+    path: '/tools/document-to-pdf',
+    name: '文档转 PDF',
+    category: '文档工具',
+    icon: FileText,
+    component: () => import('./document-to-pdf/DocumentToPdfPage.vue'),
+  },
   {
     id: 'image-converter',
     path: '/tools/image-converter',
